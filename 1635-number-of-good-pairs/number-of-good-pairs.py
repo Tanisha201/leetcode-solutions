@@ -1,9 +1,12 @@
 class Solution:
     def numIdenticalPairs(self, nums: List[int]) -> int:
-        goodPair= 0
-        for i in range (0,len(nums)):
-            for j in range (i+1,len(nums)):
-                if nums[i]==nums[j] and i<j :
-                    goodPair+=1
+        goodPair = 0
+        freq = {}
+
+        for num in nums:
+            if num in freq:
+                goodPair += freq[num]
+
+            freq[num] = freq.get(num, 0) + 1
+
         return goodPair
-        
